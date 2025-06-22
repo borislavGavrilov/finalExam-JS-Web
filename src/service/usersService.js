@@ -42,12 +42,12 @@ export default {
 
    }
    ,
-   async login(username , password){
+   async login(email , password){
 
-    const existUser =  await this.findUser(username)
+    const existUser =  await this.findUser(email)
     
     if (!existUser){
-     throw Error('Wrong username')
+     throw Error('Email alredy exist!')
     }
 
     const comparePass = await bcrypt.compare(password , existUser.password)
@@ -56,7 +56,6 @@ export default {
     throw Error ('Wrong password')
    }
 
-   //Generate token
 
    const token = generateToken(existUser)
    console.log(token);

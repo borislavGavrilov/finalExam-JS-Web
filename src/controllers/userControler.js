@@ -41,10 +41,10 @@ userController.get('/login',isGuest, (req,res) => {
  })
 
  userController.post('/login',isGuest, async (req,res) => {
-   const {username,password} = req.body
+   const {email,password} = req.body
    
    try {
-     const token =  await usersService.login(username , password)
+     const token =  await usersService.login(email , password)
 
   //attach token
 
