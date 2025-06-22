@@ -42,6 +42,9 @@ export default {
 
        return await Car.findByIdAndUpdate(productId ,newData , {runValidators :  true})
         
-    }
-
+    },
+    async findMyCars(userId){
+   return  Car.find({ owner: userId });
+   }
 }
+

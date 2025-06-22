@@ -31,7 +31,7 @@ productController.get('/catalog' , async (req,res) => {
   const getAllData = await productService.getAll()
 
   try {
-    res.render('catalog' , {getAllData})
+    res.render('products/catalog' , {getAllData})
     
   } catch (error) {
     
@@ -127,11 +127,29 @@ productController.post('/:productId/edit' , isAuth , async (req,res) => {
     
   } catch (err) {
 
-    res.render('product/edit' , {error : getError(err) , product : updatedData})
+    res.render('products/edit' , {error : getError(err) , product : updatedData})
     
   }
 
 })
+
+productController.get('/myPosts' , isAuth , async (req,res) => {
+  const getUserId = req.user.id
+  
+  
+  
+  try {
+     const cars = await productService.findMyCars(getUserId);
+    res.render('user/myposts' , {cars})
+    
+  } catch (err) {
+    
+  }
+  
+   res.render('user/myposts')
+ })
+
+
 
 
 

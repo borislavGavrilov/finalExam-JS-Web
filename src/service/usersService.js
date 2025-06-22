@@ -72,5 +72,5 @@ export default {
    return User.find({ _id: { $in: usersId } }).select('email -_id');
 
 
-   }
+   },
 }
