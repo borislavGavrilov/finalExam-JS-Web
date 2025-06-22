@@ -1,146 +1,112 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    background-color: #000;
-    color: white;
-    width: 100%;
-    background: url("https://cdn.pixabay.com/photo/2023/03/22/04/32/futuristic-7868625_1280.jpg")
-        no-repeat center;
-    background-size: cover;
-}
-
-header {
-    background: #202340;
-    padding: 20px 0;
-    text-align: center;
-}
-
-header h1 {
-    font-size: 3rem;
-    margin-top: 20px;
-    color: #fff;
-}
-
-header p {
-    font-size: 1.2rem;
-    margin: 10px 0;
-}
-
-nav ul {
-    list-style: none;
+.home-container {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-    color: #00bcd4;
-}
-
-.intro {
-    padding-top: 30vh;
-    height: 80vh;
+    align-items: center;
+    width: 50vw;
     text-align: center;
 }
-
-.intro h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+#home{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.short-info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+    padding: 3em;
+    height: 30%;
+    background-color: #000000a0;
+border-top-left-radius: 50px;
+border-bottom-right-radius: 50px;
+border: 10px solid black;
 }
 
-.intro p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-}
-
-.cta-btn {
-    text-decoration: none;
-    padding: 15px 30px;
-    background-color: #00bcd4;
-    color: #fff;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.cta-btn:hover {
-    background-color: #008c9e;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #111;
-    color: #888;
-    margin-top: auto;
-}
-
-.error-containers {
-    position: fixed;
-    right: 5em;
-    min-width: 80px;
-    display: block;
-    z-index: 11111;
-    top: 13%;
-    text-align: center;
-    border-radius: 0.5rem;
-    color: rgb(255, 255, 255);
-    font-style: italic;
+.short-info>h1 {
+    text-transform: capitalize;
+    font-size: 3.7rem;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: 3px;
+    color: #ffffff !important;
+    font-family: "Bangers", system-ui !important;
+    pointer-events: auto;
+    word-wrap: break-word;
+    position: relative;
     font-weight: bold;
-    height: auto;
-    width: 300px;
-    padding: 1em;
+    word-wrap: break-word;
+    padding-left: 1em;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px rgb(0, 0, 0);
+
 }
 
-.error-containers > p {
-    background: #2c3e50;
-    font-size: 18px;
-    padding: 10px;
-    height: auto;
+.short-info>h2 {
+    text-transform: capitalize;
+    font-size: 2.2rem;
+    font-weight: 600;
+     letter-spacing: 2px;
+    line-height: 1.1;
+    color: #fffefe !important;
+    font-family: "Bangers", system-ui !important;
+    pointer-events: auto;
+    word-wrap: break-word;
+    position: relative;
+    font-weight: bold;
+    word-wrap: break-word;
+    padding-left: 1em;
+    text-shadow: 2px 2px black;
 }
 
-.error-containers {
-    -moz-animation: cssAnimation 0s ease-in 2s forwards;
-    /* Firefox */
-    -webkit-animation: cssAnimation 0s ease-in 2s forwards;
-    /* Safari and Chrome */
-    -o-animation: cssAnimation 0s ease-in 2s forwards;
-    /* Opera */
-    animation: cssAnimation 0s ease-in 2s forwards;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
+#home-page {
+    display: block;
+    justify-content: space-around;
+    align-items: center;
+    bottom: 0;
+    margin-top: 0px;
+    margin-left: 0%;
+    margin-right: 0%;
+    min-height: 350px;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
 }
 
-@keyframes cssAnimation {
-    to {
-        width: 0;
-        height: 0;
-        overflow: hidden;
-        padding: 0;
-    }
+#home-page>h1 {
+    font-size: 2.4rem;
+    position: relative;
+    font-weight: 700;
+    line-height: 1.1;
+    padding: 0;
+    letter-spacing: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(234, 236, 250);
+    margin-top: 50px;
+    font-size: 4.5rem;
+    font-family: "Playfair Display", serif
 }
 
-@-webkit-keyframes cssAnimation {
-    to {
-        width: 0;
-        height: 0;
-        visibility: hidden;
-        padding: 0;
-    }
+.cars {
+    font-size: 0;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-evenly;
 }
+
+.container {
+    margin-top: 15px;
+    box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.597);
+    height: 100%;
+    border-radius: 20px;
+}
+
+.container>img {
+    display: inline-block;
+    border: 6px solid rgb(0, 0, 0);
+    border-radius: 20px;
+    height: 200px;
+    width: 330px;
+    max-width: 100%;
+}
+
