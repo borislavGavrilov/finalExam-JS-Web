@@ -2,6 +2,7 @@ import { Router } from "express";
 import { isAuth } from "../middlewares/authMiddlewares.js";
 import productService from "../service/productService.js";
 import { getError } from "../utils/errorUtils.js";
+import usersService from "../service/usersService.js";
 
 const productController = Router()
 
@@ -26,7 +27,7 @@ productController.post('/create' , isAuth , async (req,res) => {
   }
 })
 
-productController.get('/catalog' , isAuth , async (req,res) => {
+productController.get('/catalog' , async (req,res) => {
   const getAllData = await productService.getAll()
 
   try {
@@ -35,6 +36,50 @@ productController.get('/catalog' , isAuth , async (req,res) => {
   } catch (error) {
     
   }
+})
+
+productController.get('/:productId/details' ,async (req,res) => {
+  const productId = req.params.productId
+
+  try {
+     const productData = await productService.getProduct(productId)
+     
+     const isOwner = productData.owner[0].equals(req.user?.id)
+    
+     const ownerData = await usersService.findUserById(productData.owner.toString())
+
+     const showControls = req.isAuthenticated && isOwner;
+
+      const isLiked = productData.likes.includes(req.user?.id)
+
+    
+    res.render('products/details' , {productData , isOwner ,ownerData , showControls , isLiked})
+
+    
+  } catch (err) {
+     res.render('404' , {error : getError(err)})
+    
+  }
+})
+
+productController.get('/:productId/likes' , isAuth, async (req,res) => {
+  const productId = req.params.productId
+  const userId = req.user.id
+
+  
+ try {
+
+  await productService.likes(productId , userId)
+
+  res.redirect(`/products/${productId}/details`)
+  
+  
+ } catch (err) {
+
+  res.render('404' , {error : getError(err)})
+  
+ } 
+  
 })
 
 

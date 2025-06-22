@@ -40,6 +40,10 @@ export default {
     return User.findOne({email : email})
     
 
+   },
+   async findUserById(ownerId){
+    return User.findById(ownerId)
+
    }
    ,
    async login(email , password){
