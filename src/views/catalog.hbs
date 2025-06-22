@@ -1,0 +1,25 @@
+ <section id="catalog">
+                <h1>All posts</h1>
+                {{#each getAllData}}
+                <div class="wrap">
+                    <!-- If there are posts for car in the database display each of them -->
+                    <div class="car-card car-card-info">
+                        <div class="front">
+                            <img src="{{image}}"
+                                alt="{{model}}">
+                        </div>
+                        <div class="back">
+                            <h1>{{model}}</h1>
+                            <h2>{{Speed}}</h2>
+                            <p>{{description}}</p>
+                            <a href="#" class="details">Details</a>
+                        </div>
+                    </div>
+                    {{else}}
+                    <div class="no-posts">
+                        <p class="no-cars">There are no car posts yet...</p>
+                    </div>
+                    {{/each}}
+                </div>
+            </section>
+    

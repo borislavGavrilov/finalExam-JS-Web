@@ -25,11 +25,11 @@
 
              <ul class="menu">
                 <li><a href="/">Home</a></li>
-                <li><a href="#">Browse Rides</a></li>
+                <li><a href="/products/catalog">Browse Rides</a></li>
                 {{#if isAuthenticated}}
                 <!-- Logged users -->
-                <li><a href="#">Post a Car</a></li>
-                <li><a href="#">My Showcase</a></li>
+                <li><a href="/products/create">Post a Car</a></li>
+                <li><a href="/products/">My Showcase</a></li>
                 <li><a href="users/logout">Logout</a></li>
                 {{else}}
                 <li><a href="/users/register">Register</a></li>
