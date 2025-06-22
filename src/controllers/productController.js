@@ -50,10 +50,15 @@ productController.get('/:productId/details' ,async (req,res) => {
 
      const showControls = req.isAuthenticated && isOwner;
 
-      const isLiked = productData.likes.includes(req.user?.id)
+     const isLiked = productData.likes.includes(req.user?.id)
+     
+     const likesUsers = productData.likes
 
-    
-    res.render('products/details' , {productData , isOwner ,ownerData , showControls , isLiked})
+     const usersData = await usersService.findUsers(likesUsers)
+
+     const usersEmails = usersData.map(user => user.email).join(', ');
+     
+    res.render('products/details' , {productData , isOwner ,ownerData , showControls , isLiked , usersEmails})
 
     
   } catch (err) {
@@ -81,6 +86,53 @@ productController.get('/:productId/likes' , isAuth, async (req,res) => {
  } 
   
 })
+productController.get('/:productId/delete' , isAuth ,async (req,res) => {
+
+  const productId = req.params.productId
+
+  const getUserId = req.user.id
+
+  const product =  await productService.getProduct(productId)
+
+  if (product.owner.toString() !== getUserId ){
+   return  res.redirect('404' , {error : 'Only owner can delete this product'})
+  }
+
+  await productService.deleteProduct(productId)
+
+  res.redirect('/products/catalog')
+
+  
+})
+
+productController.get('/:productId/edit',isAuth , async (req,res) => {
+  const getProductId = req.params.productId
+
+  const getProduct =  await productService.getProduct(getProductId)
+
+  res.render('products/edit' , {getProduct})
+
+})
+
+productController.post('/:productId/edit' , isAuth , async (req,res) => {
+
+  const updatedData = req.body
+  const productId = req.params.productId
+  const userId = req.user.id
+
+  try {
+      await productService.editProduct(updatedData , productId , userId)
+
+     res.redirect(`/products/${productId}/details`)
+    
+  } catch (err) {
+
+    res.render('product/edit' , {error : getError(err) , product : updatedData})
+    
+  }
+
+})
+
 
 
 

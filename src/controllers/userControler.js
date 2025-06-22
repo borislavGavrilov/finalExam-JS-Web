@@ -46,8 +46,6 @@ userController.get('/login',isGuest, (req,res) => {
    try {
      const token =  await usersService.login(email , password)
 
-  //attach token
-
   res.cookie(AUTH_COOKIENAME , token)
 
   res.redirect('/')

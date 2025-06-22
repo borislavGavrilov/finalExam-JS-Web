@@ -21,8 +21,9 @@
                 <div class="social-btn">
                     {{#if showControls}}
                     <!-- Only for registered user and author of the post -->
-                    <a href="#" class="edit-btn">Edit</a>
-                    <a href="#" class="del-btn">Delete</a>
+                    <a href="/products/{{productData.id}}/edit" class="edit-btn">Edit</a>
+                    <a href="/products/{{productData.id}}/delete" class="del-btn">Delete</a>
+                    
                      {{else if isLiked}}
                        <p class="you-liked">Thanks For The Like</p>
                        {{else}}
@@ -47,11 +48,13 @@
                 <h1>Likes</h1>
                 <div class="card-like">
                     <!-- Show the rating of likes, if there are no likes yet, the number must be 0. -->
-                    <p class="PV">Total likes: 3</p>
+                    <p class="PV">Total likes: {{productData.likes.length}}</p>
                 </div>
-                <p class="disc">People who liked the post - No one has liked yet.</p>
- <!-- If there are already people who have cast their like for the post, separate their emails with a comma and a space ", " -->
-                    <!-- <p class="disc">People who liked the post - alex@gmai.com, petar@gmail.com, petq@gmail.com</p>-->
+                 {{#if usersEmails}}
+                 <p class="disc">People who liked the post - {{usersEmails}}</p>
+                 {{else}}
+                 <p class="disc">People who liked the post - No one has liked yet.</p>
+                 {{/if}}
             </div>
         </div>
     </div>

@@ -66,5 +66,11 @@ export default {
    
    
    return token
+   },
+   findUsers(usersId){
+
+   return User.find({ _id: { $in: usersId } }).select('email -_id');
+
+
    }
 }

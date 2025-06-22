@@ -1,10 +1,13 @@
 import { Router } from "express";
+import productService from "../service/productService.js";
 
 const homeController = Router()
 
 
-homeController.get('/' , (req,res) => {
+homeController.get('/' , async (req,res) => {
+  
   res.render('home' , {pageTitle : 'Home'})
+
 })
 
 
