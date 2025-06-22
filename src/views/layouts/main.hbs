@@ -3,46 +3,53 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{#if pageTitle}}{{pageTitle}}{{else}}Base Title{{/if}}</title>
-    <link rel="stylesheet" href="/css/styles.css">
+     <title>{{#if pageTitle}}{{pageTitle}}{{else}}Home Page{{/if}}</title>
+
+   <link href="/css/style.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="#">Catalog</a></li>
-                <li><a href="#">Search</a></li>
 
-                {{#if isAuthenticated}}
-                <li><a href="#">Create</a></li>
-                <li><a href="/users/logout">Logout</a></li>
-                {{else}}
-                 <li><a href="/users/login">Login</a></li>
-                 <li><a href="/users/register">Register</a></li>
-                 {{/if}}
-            </ul>
-        </nav>
-    </header>
-  
-        {{#if error}}
+
+    <div id="box">
+
+         {{#if error}}
       <div class="error-containers">
             <p>{{error}}</p>
         </div> 
         {{/if}}
 
-    <main>
+        <nav>
+            <!-- Do not forget to change the path to the image -->
+            <img src="/css/style.css" alt="logo">
+
+             <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Browse Rides</a></li>
+                {{#if isAuthenticated}}
+                <!-- Logged users -->
+                <li><a href="#">Post a Car</a></li>
+                <li><a href="#">My Showcase</a></li>
+                <li><a href="users/logout">Logout</a></li>
+                {{else}}
+                <li><a href="/users/register">Register</a></li>
+                 <li><a href="/users/login">Login</a></li>
+                 {{/if}}
+            </ul>
+
+        </nav>
+
+        <main>
+     {{{body}}}
+            
+        </main>
 
 
-        {{{body}}}
+        <footer>
+            © JS Back-End Exam 2025
+        </footer>
+    </div>
 
-            </main>
-
-    <footer>
-        <p>&copy; 2024 Cosmic Explorer. All rights reserved.</p>
-    </footer>
 </body>
 
 </html>

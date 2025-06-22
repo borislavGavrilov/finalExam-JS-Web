@@ -13,12 +13,12 @@ userController.get('/register', isGuest , (req,res) => {
 
 userController.post('/register',isGuest, async (req,res) => {
  
-    const {username , email , password , confimPassword} = req.body 
-    
+    const {firstName, lastName,email , password , rePassword} = req.body 
+  
 
    try {
 
-   const token =  await usersService.register(username , email , password , confimPassword)
+   const token =  await usersService.register(firstName, lastName,email , password , rePassword)
 
    //attach cookie
     res.cookie(AUTH_COOKIENAME , token)
